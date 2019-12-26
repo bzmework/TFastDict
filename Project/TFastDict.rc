@@ -67,11 +67,11 @@ BEGIN
     BEGIN
         BLOCK "040904b0"
         BEGIN
-            VALUE "CompanyName", "eLung"
-            VALUE "FileDescription", "eLung FastDict Library"
+            VALUE "CompanyName", "eLong"
+            VALUE "FileDescription", "eLong FastDict Library"
             VALUE "FileVersion", "1, 0, 0, 0"
             VALUE "InternalName", "TFastDict"
-            VALUE "LegalCopyright", "eLung Corporation.All rights reserved."
+            VALUE "LegalCopyright", "eLong Corporation.All rights reserved."
             VALUE "OriginalFilename", "TFastDict.dll"
             VALUE "ProductName", "TFastDict Module"
             VALUE "ProductVersion", "1, 0, 0, 0"

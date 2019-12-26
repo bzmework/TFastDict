@@ -7,8 +7,8 @@
 
 /***版权标识**********************************/
 #define COPYRIGHT _T("版权声明")
-#define ABOUTME   _T("本模块由亿隆软件有限公司开发，\n仅限于亿隆软件有限公司的相关产品，\n不能用于其它任何软件产品中，违者必究！")
-static const char *COMPANY = "elung.co.ltd"; 
+#define ABOUTME   _T("关于我们")
+static const char *COMPANY = "elong.tech"; 
 static const char *AUTHOR = "denglf";
 /*********************************************/
 

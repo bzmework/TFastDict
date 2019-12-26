@@ -1,0 +1,79 @@
+// TFastDict.idl : IDL source for TFastDict.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (TFastDict.tlb) and marshalling code.
+
+	import "oaidl.idl";
+	import "ocidl.idl";
+
+	[
+		odl,
+		uuid(B3491C1D-CDD4-498a-955E-85AD8D957CF3),
+		helpstring("字典接口"),
+		hidden,
+		dual,
+		oleautomation,
+		pointer_default(unique)
+    ]
+    interface IFastDict : IDispatch
+    {
+
+        [id(DISPID_VALUE), propputref, helpstring("返回/设置指定键的项目")]
+        HRESULT Item([in] VARIANT* Key, [in] VARIANT* pRetItem);
+
+        [id(DISPID_VALUE), propput, helpstring("返回/设置指定键的项目")]
+        HRESULT Item([in] VARIANT* Key, [in] VARIANT* pRetItem);
+
+        [id(DISPID_VALUE), propget, helpstring("返回/设置指定键的项目")]
+        HRESULT Item([in] VARIANT* Key, [out, retval] VARIANT* pRetItem);
+
+		[id(0x00000001), helpstring("关于")] HRESULT AboutMe();
+
+        [id(0x00000002), helpstring("向字典中添加一个新键和项")]
+        HRESULT Add([in] VARIANT* Key, [in] VARIANT* Item, [out, retval] VARIANT_BOOL* pOk);
+
+        [id(0x00000003), propget, helpstring("返回字典中的项目数量")]
+        HRESULT Count([out, retval] long* pCount);
+
+        [id(0x00000004), helpstring("判断指定的键是否在字典中")]
+        HRESULT Exists([in] VARIANT* Key, [out, retval] VARIANT_BOOL* pExists);
+		
+		[id(0x00000005), helpstring("返回一个数组,其中包含字典中的所有键")]
+        HRESULT Keys([out, retval] VARIANT* pKeysArray);
+
+        [id(0x00000006), helpstring("返回一个数组,其中包含字典中的所有项目")]
+        HRESULT Items([out, retval] VARIANT* pItemsArray);
+
+		[id(0x00000007), helpstring("返回一个数组,其中包含从字典中的查找到的项目,仅用于查找字符串.")]
+        HRESULT Query([in] VARIANT* pItem, [out, retval] VARIANT* pItemsArray);
+
+        [id(0x00000008), helpstring("从字典中删除指定的键")]
+        HRESULT Remove([in] VARIANT* Key);
+
+        [id(0x00000009), helpstring("删除字典中的所有项目")]
+        HRESULT RemoveAll();
+
+        //[id(DISPID_NEWENUM), restricted]
+        //HRESULT _NewEnum([out, retval] IUnknown** ppunk);
+    }
+
+[
+	uuid(791CE33E-3B77-492d-A817-D0224FDDBB00),
+	version(1.0),
+	helpstring("eLong FastDictionary Library")
+]
+library TFastDict
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(A60EB914-B33D-42fc-A830-2D56A4342227),
+		helpstring("字典")
+	]
+	coclass FastDict
+	{
+		[default] interface IFastDict;
+	};
+};

@@ -1,0 +1,26 @@
+HKCR
+{
+	TFastDict.FastDict.1 = s 'FastDict Class'
+	{
+		CLSID = s '{A60EB914-B33D-42fc-A830-2D56A4342227}'
+	}
+	TFastDict.FastDict = s 'FastDict Class'
+	{
+		CLSID = s '{A60EB914-B33D-42fc-A830-2D56A4342227}'
+		CurVer = s 'TFastDict.FastDict.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {A60EB914-B33D-42fc-A830-2D56A4342227} = s 'FastDict Class'
+		{
+			ProgID = s 'TFastDict.FastDict.1'
+			VersionIndependentProgID = s 'TFastDict.FastDict'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{791CE33E-3B77-492d-A817-D0224FDDBB00}'
+		}
+	}
+}

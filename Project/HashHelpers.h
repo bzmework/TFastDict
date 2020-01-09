@@ -3,7 +3,7 @@
 	模块：哈希表(HashTable)帮助
 	作者：denglf
 	日期：2019-04-24
-	说明：本代码参考自微软.NET Frameworks源码
+	说明：本代码参考了微软.NET Frameworks源码
 */
 
 #ifndef __HASHHELPERS_H_

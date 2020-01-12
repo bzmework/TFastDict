@@ -20,15 +20,22 @@
 
 //类型定义
 #if defined(_MSC_VER) && (_MSC_VER < 1600)
-	typedef signed char        int8_t;
-	typedef short              int16_t;
-	typedef int                int32_t;
-	typedef long long          int64_t;
-	typedef unsigned char      uint8_t;
-	typedef unsigned short     uint16_t;
-	typedef unsigned int       uint32_t;
-	typedef unsigned long long uint64_t;
-	typedef unsigned __int64   uint64_t;
+	typedef signed char				int8_t;
+	typedef short					int16_t;
+	typedef int						int32_t;
+	#if (_MSC_VER <= 1200) //VC++ 6.0
+		typedef __int64				int64_t;
+	#else
+		typedef long long			int64_t;
+	#endif
+	typedef unsigned char			uint8_t;
+	typedef unsigned short			uint16_t;
+	typedef unsigned int			uint32_t;
+	#if (_MSC_VER <= 1200) //VC++ 6.0
+		typedef unsigned __int64	uint64_t;
+	#else
+		typedef unsigned long long	uint64_t;
+	#endif
 #else
 	#include <stdint.h>
 #endif
@@ -121,11 +128,13 @@ public:
 	//获得素数
     static __forceinline int GetPrime(int min)
     {
+		int32_t i = 0;
+
 		//获得数组元素的数量
 		int32_t count = (sizeof(primes) / sizeof(primes[0]));
-
+		
         //未设置(0)，则从primes表中取出一个 >= min的最小素数
-        for (int32_t i = 0; i < count; i++)
+        for (i = 0; i < count; i++)
         {
             int prime = primes[i];
             if (prime >= min) return prime;
@@ -133,7 +142,7 @@ public:
 
         //超出primes的最大值，则运算一个
         //outside of our predefined table. compute the hard way. 
-        for (int32_t i = (min | 1); i < MaxHashTable; i += 2)
+        for (i = (min | 1); i < MaxHashTable; i += 2)
         {
             if (IsPrime(i) && ((i - 1) % DefaultHashPrime != 0))
                 return i;

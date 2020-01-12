@@ -234,7 +234,7 @@ SOURCE="$(InputPath)"
 # PROP Intermediate_Dir "ReleaseUMinDependency"
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /MT /W3 /O1 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_USRDLL" /D "_UNICODE" /D "_ATL_STATIC_REGISTRY" /D "_ATL_MIN_CRT" /Yu"stdafx.h" /FD /c
-# ADD CPP /nologo /MT /W3 /O1 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_USRDLL" /D "_UNICODE" /D "_ATL_STATIC_REGISTRY" /D "_ATL_MIN_CRT" /Yu"stdafx.h" /FD /c
+# ADD CPP /nologo /MT /W3 /O1 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_USRDLL" /D "_UNICODE" /D "_ATL_STATIC_REGISTRY" /D "_ATL_MIN_CRT" /FR /Yu"stdafx.h" /FD /c
 # ADD BASE RSC /l 0x804 /d "NDEBUG"
 # ADD RSC /l 0x804 /d "NDEBUG"
 BSC32=bscmake.exe
@@ -276,22 +276,6 @@ SOURCE="$(InputPath)"
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Source File
 
-SOURCE=.\MemDC.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\ShadowWindow.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\FastDict.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\SkinWindow.cpp
-# End Source File
-# Begin Source File
-
 SOURCE=.\StdAfx.cpp
 # ADD CPP /Yc"stdafx.h"
 # End Source File
@@ -314,7 +298,7 @@ SOURCE=.\TFastDict.rc
 # End Source File
 # Begin Source File
 
-SOURCE=.\win32gdi.cpp
+SOURCE=.\TFastDictInt.cpp
 # End Source File
 # End Group
 # Begin Group "Header Files"
@@ -322,7 +306,11 @@ SOURCE=.\win32gdi.cpp
 # PROP Default_Filter "h;hpp;hxx;hm;inl"
 # Begin Source File
 
-SOURCE=.\MemDC.h
+SOURCE=.\FastDict.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\HashHelpers.h
 # End Source File
 # Begin Source File
 
@@ -330,23 +318,19 @@ SOURCE=.\Resource.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\ShadowWindow.h
-# End Source File
-# Begin Source File
-
-SOURCE=.\FastDict.h
-# End Source File
-# Begin Source File
-
-SOURCE=.\SkinWindow.h
-# End Source File
-# Begin Source File
-
 SOURCE=.\StdAfx.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\win32gdi.h
+SOURCE=.\TFastDict.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\TFastDictInt.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\VMemAlloc.h
 # End Source File
 # End Group
 # Begin Group "Resource Files"
@@ -354,7 +338,7 @@ SOURCE=.\win32gdi.h
 # PROP Default_Filter "ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"
 # Begin Source File
 
-SOURCE=.\FastDict.rgs
+SOURCE=.\TFastDict.rgs
 # End Source File
 # End Group
 # End Target

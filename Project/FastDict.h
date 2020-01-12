@@ -218,13 +218,15 @@ public:
     {
         if (m_count > 0)
         {
+			int32_t i = 0;
+
             //重置所有储槽
-			for (int32_t i = 0; i < m_capacity; i++)
+			for (i = 0; i < m_capacity; i++)
 			{
 				m_buckets[i] = -1;
 			}
 			//清除项目数据
-			for (int32_t i = 0; i < m_count; i++)
+			for (i = 0; i < m_count; i++)
 			{
 				VariantClear(&m_items[i].key);
 				VariantClear(&m_items[i].value);
@@ -848,14 +850,24 @@ private:
 		//取得新扩字节数
 		int32_t newCapacity = HashHelpers::ExpandPrime(m_capacity);//新扩容量
 		int32_t blocks = sizeof(int32_t) + sizeof(dicitem); //每个储槽和项目占用的字节数
-		DWORDLONG newSize = blocks * (DWORDLONG)newCapacity;//字节数
+		#if (_MSC_VER <= 1200) //VC++ 6.0
+			int64_t newSize = blocks * (int64_t)newCapacity;//字节数
+		#else
+			uint64_t newSize = blocks * (uint64_t)newCapacity;//字节数
+		#endif
 
 		//取得内存可用空间
 		MEMORYSTATUSEX ms;
 		ms.dwLength = sizeof(MEMORYSTATUSEX);
 		GlobalMemoryStatusEx(&ms);
-		DWORDLONG ullAvailPhys = ms.ullAvailPhys; //字节数
-		DWORDLONG ullAvailVirtual = ms.ullAvailVirtual; //字节数
+
+		#if (_MSC_VER <= 1200) //VC++ 6.0
+			int64_t ullAvailPhys = (int64_t)ms.ullAvailPhys; //字节数
+			int64_t ullAvailVirtual = (int64_t)ms.ullAvailVirtual; //字节数
+		#else
+			uint64_t ullAvailPhys = (uint64_t)ms.ullAvailPhys; //字节数
+			uint64_t ullAvailVirtual = (uint64_t)ms.ullAvailVirtual; //字节数
+		#endif
 
 		//已经超出了可用的虚拟内存，但还没有超过可用的物理内存，按可用虚拟内存的50%申请内存
 		if (newSize >= ullAvailVirtual && newSize < ullAvailPhys)

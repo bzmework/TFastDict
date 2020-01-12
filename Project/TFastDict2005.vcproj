@@ -863,10 +863,6 @@
 			Filter="h;hpp;hxx;hm;inl"
 			>
 			<File
-				RelativePath=".\FastDataDict.h"
-				>
-			</File>
-			<File
 				RelativePath=".\FastDict.h"
 				>
 			</File>
